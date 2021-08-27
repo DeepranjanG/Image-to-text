@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, render_template
 import os
 from flask_cors import CORS, cross_origin
 from com_in_ineuron_ai_utils.utils import decodeImage
+from wsgiref import simple_server
 from predict import ocr
 
 os.putenv('LANG', 'en_US.UTF-8')
@@ -34,7 +35,6 @@ def predictRoute():
     return jsonify([result])
 
 
-#port = int(os.getenv("PORT"))
 if __name__ == "__main__":
     port = int(os.getenv("PORT"))
     clApp = ClientApp()
